@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "accounts",
     "rest_framework",
+    "rest_framework.authtoken",
+    "course_management",
 ]
 
 MIDDLEWARE = [

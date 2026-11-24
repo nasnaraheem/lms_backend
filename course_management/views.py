@@ -5,6 +5,7 @@ from rest_framework import authentication,permissions
 from course_management.models import Course
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from accounts.permission import IsOwner
 
 # Create your views here.
 class CourseListCreateView(APIView):
@@ -33,7 +34,7 @@ class CourseListCreateView(APIView):
 class CourseRetriveUpdateDeleteView(APIView):
 
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[permissions.IsAuthenticated]
+    permission_classes=[IsOwner]
 
     def get(self,request,pk=None):
 

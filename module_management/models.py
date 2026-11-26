@@ -36,13 +36,15 @@ class Module(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        module_instance = Module.objects.filter(course=self.course).last()
 
-        if module_instance:
+        if not self.id:
+            module_instance = Module.objects.filter(course=self.course).last()
 
-            self.order = module_instance.order + 1
-        else:
-            self.order = 1
+            if module_instance:
+
+                self.order = module_instance.order + 1
+            else:
+                self.order = 1
 
         if not self.slug:
             self.slug = slugify(self.title)

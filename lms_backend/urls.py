@@ -23,6 +23,8 @@ from course_management.views import CourseListCreateView
 from course_management.views import CourseRetriveUpdateDeleteView
 from module_management.views import ModuleCreateView
 from module_management.views import ModuleRetriveUpdateDeleteView
+from lesson_management.views import LessonCreateView
+from lesson_management.views import LessonRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +40,12 @@ urlpatterns = [
     #===course=====
     path("courses/",CourseListCreateView.as_view()),
     path("courses/<int:pk>/",CourseRetriveUpdateDeleteView.as_view()),
+
+     #module
     path("course/<int:pk>/module/",ModuleCreateView.as_view()),
     path("module/<int:pk>/",ModuleRetriveUpdateDeleteView.as_view()),
+
+     #lesson
+    path("module/<int:pk>/lesson/",LessonCreateView.as_view()),
+    path("lesson/<int:pk>/",LessonRetrieveUpdateDestroyView.as_view()),
 ]
